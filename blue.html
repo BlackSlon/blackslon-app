@@ -8,46 +8,50 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-        body { 
-            background-color: #000; margin: 0; padding: 20px; 
-            font-family: 'Courier New', monospace; color: #fff; 
-            min-height: 100vh;
-            position: relative;
+        /* RESET I BAZA */
+        html, body { 
+            background-color: #000 !important; 
+            margin: 0 !important; 
+            padding: 0 !important; 
+            height: 100% !important;
+            overflow-x: hidden;
+            font-family: 'Courier New', monospace;
+            color: #fff;
         }
+
         :root { --bs-blue: #4682B4; --bs-red: #cc0000; --bs-green: #00ff88; --bs-yellow: #ffcc00; }
-        
-        /* Kontener aplikacji - dodajemy margines dolny, by treść nie wchodziła pod dock */
-        #blackslon-matrix-root { padding-bottom: 120px; }
 
-        .matrix-layout { display: flex; gap: 15px; max-width: 1300px; margin: auto; }
-        .matrix-main { flex: 1; border: 1px solid #1a1a1a; padding: 15px; background: #020202; }
-        .side-panel { width: 260px; border: 1px solid #1a1a1a; padding: 15px; background: #050505; font-size: 11px; height: fit-content; }
-        
-        .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 40px; }
-        .event-card { background: #000; border: 1px solid #151515; padding: 12px; border-top: 2px solid var(--bs-blue); min-height: 220px; }
-        .yield-badge { font-size: 14px; font-weight: bold; color: var(--bs-green); }
-        .v-btn { flex: 1; padding: 8px; font-size: 10px; font-weight: bold; cursor: pointer; border: 1px solid #222; background: transparent; color: #fff; }
+        /* KONTENER DLA REACTA */
+        #blackslon-matrix-root { 
+            padding: 20px;
+            padding-bottom: 150px; /* Miejsce na dock */
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
 
-        /* PROTOCOL DOCK - ZAWSZE NA DOLE EKRANU */
-        #protocol-nav {
+        /* PROTOCOL DOCK - TOTALNA IZOLACJA */
+        .protocol-dock {
             position: fixed !important; 
             bottom: 0 !important; 
             left: 0 !important;
             width: 100% !important;
             height: 100px !important;
+            z-index: 2147483647 !important; /* Maksymalny możliwy z-index w przeglądarkach */
+            background: linear-gradient(to top, #000 80%, transparent 100%) !important;
             display: flex !important; 
             justify-content: center !important;
             align-items: center !important;
             gap: 20px !important;
-            z-index: 999999 !important;
-            background: linear-gradient(to top, #000 70%, transparent 100%) !important;
-            pointer-events: none; /* Pozwala klikać w treść pod spodem, jeśli nie trafiamy w przycisk */
+            pointer-events: none;
         }
 
         .nav-box { 
-            width: 45px; height: 45px; border: 2px solid transparent; 
-            transition: 0.2s; display: block; 
-            pointer-events: auto; /* Przywraca klikalność przycisków */
+            width: 50px !important; 
+            height: 50px !important; 
+            border: 2px solid transparent; 
+            transition: 0.2s; 
+            pointer-events: auto !important;
+            display: block;
         }
         .box-home { border-color: #fff; }
         .box-red { background-color: #ff0000; }
@@ -55,17 +59,23 @@
         .box-yellow { background-color: #ffcc00; }
         .box-blue { background-color: #0000ff; border: 2px solid var(--bs-blue); }
         .box-wp { background-color: #fff; }
-        .nav-box:hover { transform: translateY(-5px); box-shadow: 0 0 15px rgba(255,255,255,0.3); }
+        .nav-box:hover { transform: translateY(-5px); }
 
-        .matrix-input, .matrix-select, .matrix-textarea { background: #000; border: 1px solid #1a1a1a; color: #ccc; padding: 8px; width: 100%; margin-bottom: 10px; box-sizing: border-box; font-family: monospace; }
-        .v-btn-submit { width: 100%; padding: 10px; border: 1px solid var(--bs-yellow); background: transparent; color: var(--bs-yellow); cursor: pointer; font-weight: bold; }
+        /* STYLE MATRIXA (Uproszczone dla stabilności) */
+        .matrix-layout { display: flex; gap: 15px; max-width: 1300px; margin: auto; }
+        .matrix-main { flex: 1; border: 1px solid #1a1a1a; padding: 15px; background: #020202; }
+        .side-panel { width: 250px; border: 1px solid #1a1a1a; padding: 15px; background: #050505; font-size: 11px; height: fit-content; }
+        .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-top: 30px; }
+        .event-card { background: #000; border: 1px solid #151515; padding: 15px; border-top: 2px solid var(--bs-blue); }
+        .v-btn { flex: 1; padding: 8px; font-size: 10px; border: 1px solid #333; background: transparent; color: #fff; cursor: pointer; }
+        .matrix-input, .matrix-textarea { background: #000; border: 1px solid #1a1a1a; color: #ccc; width: 100%; margin-bottom: 10px; padding: 5px; }
     </style>
 </head>
 <body>
 
     <div id="blackslon-matrix-root"></div>
 
-    <div id="protocol-nav">
+    <div class="protocol-dock">
         <a href="index.html" class="nav-box box-home" title="Home"></a>
         <a href="red.html" class="nav-box box-red" title="Problem"></a>
         <a href="green.html" class="nav-box box-green" title="Genesis"></a>
@@ -76,36 +86,31 @@
 
     <script type="text/babel">
         const EVENTS = [
-            { market: 'NAT GAS', region: 'UKRAINE', desc: 'Will Russia destroy the world’s largest underground gas storage facility?', stake: '1,240,000', yield: '740%', deadline: '30.06.2026' },
-            { market: 'POWER', region: 'EU', desc: 'Will day-ahead electricity prices (RDN) exceed 300 EUR/MWh?', stake: '845,200', yield: '290%', deadline: '30.07.2026' },
-            { market: 'NAT GAS', region: 'TTF', desc: 'Will the TTF Natural Gas price exceed 50 EUR/MWh?', stake: '2,105,000', yield: '165%', deadline: '31.05.2026' }
+            { market: 'NAT GAS', desc: 'Will Russia destroy the gas storage in Ukraine?', stake: '1,240,000', yield: '740%' },
+            { market: 'POWER', desc: 'Will day-ahead prices exceed 300 EUR/MWh?', stake: '845,200', yield: '290%' },
+            { market: 'NAT GAS', desc: 'Will the TTF Natural Gas price exceed 50 EUR/MWh?', stake: '2,105,000', yield: '165%' }
         ];
 
         function App() {
             return (
                 <div className="matrix-layout">
                     <div className="side-panel">
-                        <div style={{color: 'var(--bs-blue)', marginBottom: '15px', fontWeight: 'bold'}}>PUT YOUR EVENT</div>
-                        <select className="matrix-select"><option>POWER</option><option>NAT GAS</option></select>
-                        <textarea className="matrix-textarea" rows="4" placeholder="Describe event..."></textarea>
-                        <button className="v-btn-submit">SUBMIT TO PROTOCOL</button>
+                        <div style={{color: 'var(--bs-blue)', marginBottom: '15px'}}>PUT YOUR EVENT</div>
+                        <textarea className="matrix-textarea" rows="4" placeholder="Describe..."></textarea>
+                        <button style={{width:'100%', color:'var(--bs-yellow)', border:'1px solid var(--bs-yellow)', background:'none', padding:'10px', cursor:'pointer'}}>SUBMIT</button>
                     </div>
                     <div className="matrix-main">
-                        <h1 style={{fontSize: '16px', color: 'var(--bs-blue)', letterSpacing: '2px', marginBottom: '20px'}}>MATRIX OF BLACKSLON EVENTS // PROTOCOL</h1>
+                        <h1 style={{fontSize: '18px', color: 'var(--bs-blue)'}}>MATRIX OF BLACKSLON EVENTS // PROTOCOL</h1>
                         <div className="event-grid">
                             {EVENTS.map((ev, i) => (
                                 <div key={i} className="event-card">
-                                    <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10px'}}>
-                                        <span style={{fontSize: '10px', color: '#666'}}>{ev.market}</span>
-                                        <span className="yield-badge">{ev.yield}</span>
+                                    <div style={{display:'flex', justifyContent:'space-between'}}>
+                                        <span style={{fontSize:'10px'}}>{ev.market}</span>
+                                        <span style={{color:'var(--bs-green)'}}>{ev.yield}</span>
                                     </div>
-                                    <p style={{fontSize: '12px', color: '#ccc', minHeight: '60px'}}>{ev.desc}</p>
-                                    <div style={{display: 'flex', gap: '5px', marginBottom: '15px'}}>
-                                        <button className="v-btn" style={{borderColor: 'var(--bs-green)', color: 'var(--bs-green)'}}>YES</button>
-                                        <button className="v-btn" style={{borderColor: 'var(--bs-red)', color: 'var(--bs-red)'}}>NO</button>
-                                    </div>
-                                    <div style={{borderTop: '1px solid #111', paddingTop: '10px', fontSize: '10px', color: '#444'}}>
-                                        LIQUIDTY: <span style={{color: 'var(--bs-blue)', fontWeight: 'bold'}}>{ev.stake} €BLSN</span>
+                                    <p style={{fontSize:'13px', margin:'15px 0'}}>{ev.desc}</p>
+                                    <div style={{fontSize:'10px', color:'#444'}}>
+                                        **Liquidty**: <span style={{color:'var(--bs-blue)'}}>{ev.stake} €BLSN</span>
                                     </div>
                                 </div>
                             ))}
