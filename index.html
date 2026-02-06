@@ -7,7 +7,7 @@
         body { 
             background: #000; 
             color: #fff; 
-            font-family: sans-serif; 
+            font-family: 'Inter', sans-serif; 
             margin: 0; 
             display: flex; 
             flex-direction: column; 
@@ -16,44 +16,47 @@
             height: 100vh; 
             overflow: hidden;
         }
-        .main { text-align: center; }
+        .main-container { text-align: center; }
+        .brand { font-size: 40px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; }
+        .sub { font-size: 12px; color: #444; letter-spacing: 5px; margin-bottom: 40px; text-transform: uppercase; }
+        
+        /* Twoje Logo - czysty kwadrat */
         .logo { 
-            width: 400px; 
+            width: 380px; 
             height: auto; 
             display: block; 
-            margin: 20px auto; 
+            margin: 0 auto; 
         }
-        .nav { 
-            position: absolute; 
-            bottom: 60px; 
-            display: flex; 
-            gap: 20px; 
-        }
-        .box { width: 55px; height: 55px; border: 2px solid transparent; }
-        .b1 { border-color: #fff; }
-        .b2 { background: #ff0000; }
-        .b3 { background: #00ff00; }
-        .b4 { background: #ffcc00; }
-        .b5 { background: #0000ff; }
-        .b6 { background: #fff; }
+
+        /* Dolna nawigacja 1:1 */
+        .nav { position: absolute; bottom: 60px; display: flex; gap: 20px; }
+        .box { width: 55px; height: 55px; border: 2px solid transparent; text-decoration: none; transition: 0.2s; }
+        
+        .b-home   { border-color: #fff; } 
+        .b-red    { background: #ff0000; }
+        .b-green  { background: #00ff00; }
+        .b-yellow { background: #ffcc00; }
+        .b-blue   { background: #0000ff; }
+        .b-white  { background: #fff; }
+
+        .box:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
-    <div class="main">
-        <h1 style="letter-spacing: 2px; margin-bottom: 0;">BlackSlon</h1>
-        <p style="color: #444; letter-spacing: 4px; font-size: 12px; margin-top: 5px;">ENERGY INDEXES™</p>
-        
-        <img src="BS_image.jpg" alt="BlackSlon" class="logo">
+    <div class="main-container">
+        <div class="brand">BlackSlon</div>
+        <div class="sub">Energy Indexes™</div>
+        <img src="logo.png" alt="BlackSlon Protocol" class="logo">
     </div>
 
     <div class="nav">
-        <a href="index.html" class="box b1"></a>
-        <a href="red.html" class="box b2"></a>
-        <a href="green.html" class="box b3"></a>
-        <a href="trading.html" class="box b4"></a>
-        <a href="blue.html" class="box b5"></a>
-        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="box b6"></a>
+        <a href="index.html" class="box b-home"></a>
+        <a href="red.html" class="box b-red"></a>
+        <a href="green.html" class="box b-green"></a>
+        <a href="trading.html" class="box b-yellow"></a>
+        <a href="blue.html" class="box b-blue"></a>
+        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="box b-white"></a>
     </div>
 
 </body>
