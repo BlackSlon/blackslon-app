@@ -94,4 +94,78 @@
             <option>NUCLEAR</option>
             <option>CRUDE OIL</option>
             <option>REGULATION</option>
-            <option>WEATHER
+            <option>WEATHER EXTREMES</option>
+          </select>
+
+          <label className="label">Region</label>
+          <select className="matrix-select">
+            <option>POLAND</option>
+            <option>GERMANY</option>
+            <option>FRANCE</option>
+            <option>UKRAINE</option>
+            <option>NORWAY</option>
+            <option>EU GLOBAL</option>
+          </select>
+
+          <label className="label">Event Definition</label>
+          <textarea className="matrix-textarea" rows="4" placeholder="Describe your BlackSlon event..."></textarea>
+          
+          <label className="label">Stake (Min. 1 €BLSN)</label>
+          <input className="matrix-input" placeholder="Enter amount (min. 1 €BLSN)" />
+          
+          <button className="v-btn-submit">SUBMIT EVENT</button>
+        </div>
+
+        <div className="matrix-main">
+          <button 
+            className={`matrix-connect-btn ${connected ? 'wallet-active' : ''}`}
+            onClick={() => setConnected(!connected)}
+          >
+            {connected ? '0x71C...4E2A' : 'Connect Wallet'}
+          </button>
+
+          <h1 style={{ margin: '0 0 15px 0', fontSize: '18px', fontWeight: 'bold', color: 'var(--bs-blue)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+            Matrix of BlackSlon Events // Protocol Access
+          </h1>
+          
+          <div className="event-grid">
+            {EVENTS.map((ev, i) => (
+              <div key={i} className="event-card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                  <span style={{fontSize: '8px', color: '#666'}}>{ev.market} // {ev.region}</span>
+                  <div className="yield-badge">{ev.yield}</div>
+                </div>
+                
+                <span className="deadline-tag">DEADLINE: {ev.deadline}</span>
+                
+                <div className="stat-row">
+                  <span>VOTES CAST: {ev.votes}</span>
+                </div>
+
+                <div style={{fontSize: '11px', color: '#ccc', margin: '5px 0 15px 0', flex: 1, lineHeight: '1.5'}}>
+                  {ev.desc}
+                </div>
+                
+                <div style={{display: 'flex', gap: '6px', marginBottom: '10px'}}>
+                  <button className="v-btn v-yes">YES</button>
+                  <button className="v-btn v-no">NO</button>
+                </div>
+                
+                <div className="card-footer">
+                  <span style={{textTransform: 'uppercase'}}>Liquidty:</span>
+                  <span className="liquid-val">{ev.stake} €BLSN</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('blackslon-matrix-root'));
+  root.render(<MatrixApp />);
+</script>
+
+</body>
+</html>
