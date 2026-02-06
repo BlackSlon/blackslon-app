@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlackSlon Protocol</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        
         body { 
-            background: #000; 
+            background-color: #000; 
             color: #fff; 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
@@ -16,47 +19,90 @@
             height: 100vh; 
             overflow: hidden;
         }
-        .main-container { text-align: center; }
-        .brand { font-size: 40px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; }
-        .sub { font-size: 12px; color: #444; letter-spacing: 5px; margin-bottom: 40px; text-transform: uppercase; }
-        
-        /* Twoje Logo - czysty kwadrat */
-        .logo { 
-            width: 380px; 
-            height: auto; 
-            display: block; 
-            margin: 0 auto; 
+
+        .main-container {
+            text-align: center;
+            margin-top: -30px;
         }
 
-        /* Dolna nawigacja 1:1 */
-        .nav { position: absolute; bottom: 60px; display: flex; gap: 20px; }
-        .box { width: 55px; height: 55px; border: 2px solid transparent; text-decoration: none; transition: 0.2s; }
-        
-        .b-home   { border-color: #fff; } 
-        .b-red    { background: #ff0000; }
-        .b-green  { background: #00ff00; }
-        .b-yellow { background: #ffcc00; }
-        .b-blue   { background: #0000ff; }
-        .b-white  { background: #fff; }
+        .brand {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+        }
 
-        .box:hover { transform: scale(1.1); }
+        .brand-sub {
+            font-size: 14px;
+            color: #444;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* Twoje Logo Base64 */
+        .bs-logo {
+            width: 380px; 
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Dolna Nawigacja Kwadratowa */
+        .nav-footer {
+            position: absolute;
+            bottom: 60px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-box {
+            width: 55px;
+            height: 55px;
+            border: 2px solid transparent;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .box-home   { border-color: #fff; } 
+        .box-red    { background-color: #ff0000; }
+        .box-green  { background-color: #00ff00; }
+        .box-yellow { background-color: #ffcc00; }
+        .box-blue   { background-color: #0000ff; }
+        .box-wp     { background-color: #fff; }
+
+        .nav-box:hover { transform: scale(1.1); }
+
+        .status-bar {
+            position: absolute;
+            bottom: 20px;
+            font-size: 9px;
+            color: #222;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
     <div class="main-container">
         <div class="brand">BlackSlon</div>
-        <div class="sub">Energy Indexes™</div>
-        <img src="logo.png" alt="BlackSlon Protocol" class="logo">
+        <div class="brand-sub">Energy Indexes™</div>
+        
+        <img src="data:image/jpeg;base64,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" alt="BlackSlon Protocol" class="bs-logo">
     </div>
 
-    <div class="nav">
-        <a href="index.html" class="box b-home"></a>
-        <a href="red.html" class="box b-red"></a>
-        <a href="green.html" class="box b-green"></a>
-        <a href="trading.html" class="box b-yellow"></a>
-        <a href="blue.html" class="box b-blue"></a>
-        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="box b-white"></a>
+    <div class="nav-footer">
+        <a href="index.html" class="nav-box box-home" title="Home"></a>
+        <a href="red.html" class="nav-box box-red" title="Problem"></a>
+        <a href="green.html" class="nav-box box-green" title="Genesis"></a>
+        <a href="trading.html" class="nav-box box-yellow" title="Trading Desk"></a>
+        <a href="blue.html" class="nav-box box-blue" title="Event Matrix"></a>
+        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="nav-box box-wp" title="White Paper"></a>
+    </div>
+
+    <div class="status-bar">
+        BlackSlon **protocol** // Automated **Liquidty** Layer // v.2026.02
     </div>
 
 </body>
