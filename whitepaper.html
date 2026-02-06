@@ -3,36 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Paper - BlackSlon Protocol</title>
+    <title>BlackSlon Protocol</title>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; line-height: 1.8; padding: 60px 20px; }
-        .paper-container { max-width: 850px; margin: 0 auto; background: #050505; padding: 50px; border: 1px solid #222; box-shadow: 0 0 30px rgba(255,255,255,0.02); }
-        h1 { color: #fff; text-transform: uppercase; letter-spacing: 4px; border-bottom: 1px solid #333; padding-bottom: 20px; text-align: center; }
-        h2 { color: #888; text-transform: uppercase; font-size: 18px; margin-top: 40px; letter-spacing: 2px; }
-        p { color: #ccc; font-size: 17px; margin-bottom: 20px; }
-        .formula { background: #111; padding: 20px; border-left: 3px solid #fff; font-family: 'Courier New', monospace; color: #fff; margin: 30px 0; }
-        .back-btn { display: block; width: fit-content; margin: 40px auto; color: #666; text-decoration: none; text-transform: uppercase; font-size: 12px; border: 1px solid #333; padding: 10px 20px; transition: 0.3s; }
-        .back-btn:hover { color: #fff; border-color: #fff; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            color: #444;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 60px;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 220px);
+            gap: 15px;
+        }
+
+        .nav-item {
+            padding: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #1a1a1a;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Definicja kolorów 1:1 */
+        .red { color: #ff0000; }
+        .red:hover { border-color: #ff0000; background: rgba(255, 0, 0, 0.02); }
+
+        .green { color: #00ff00; }
+        .green:hover { border-color: #00ff00; background: rgba(0, 255, 0, 0.02); }
+
+        .blue { color: #0000ff; }
+        .blue:hover { border-color: #0000ff; background: rgba(0, 0, 255, 0.02); }
+
+        .yellow { color: #ffcc00; }
+        .yellow:hover { border-color: #ffcc00; background: rgba(255, 204, 0, 0.02); }
+
+        .white-paper { 
+            grid-column: span 2; 
+            color: #ffffff; 
+            border-color: #333;
+            margin-top: 10px;
+            padding: 25px;
+            font-size: 15px;
+        }
+        .white-paper:hover { border-color: #fff; background: rgba(255, 255, 255, 0.05); }
+
+        .status-bar {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            text-align: center;
+            font-size: 10px;
+            color: #222;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
-    <div class="paper-container">
-        <h1>White Paper</h1>
-        <p style="text-align: center; color: #666;">Version 1.0 // BlackSlon Protocol</p>
 
-        <h2>1. Abstract</h2>
-        <p>The BlackSlon Protocol introduces a revolutionary approach to energy market liquidity through mathematical price determination and decentralized stabilization mechanisms.</p>
+    <div class="logo">BlackSlon</div>
+    <div class="tagline">The New Architecture of Energy</div>
 
-        <h2>2. Price Determination</h2>
-        <div class="formula">
-            P = a * e^(b * S)
-        </div>
-        <p>This bonding curve ensures that price discovery is automated and reflects real-time demand within the ecosystem, providing the necessary <strong>Liquidty</strong> even in volatile conditions.</p>
-
-        <h2>3. Problem & Solution</h2>
-        <p>Current markets suffer from a "Capital Trap". Our protocol solves this by implementing an arbitrage mechanism that stabilizes the asset while maintaining market incentives.</p>
-
-        <a href="index.html" class="back-btn">← Exit White Paper</a>
+    <div class="nav-grid">
+        <a href="red.html" class="nav-item red">The Problem</a>
+        <a href="green.html" class="nav-item green">The Genesis</a>
+        <a href="blue.html" class="nav-item blue">Event Matrix</a>
+        <a href="terminal.html" class="nav-item yellow">Trading Desk</a>
+        
+        <a href="docs/white-paper.md" class="nav-item white-paper">Executive Summary & White Paper</a>
     </div>
+
+    <div class="status-bar">
+        BlackSlon **protocol** // Decentralized **Liquidty** engine // active_session_2026
+    </div>
+
 </body>
 </html>
