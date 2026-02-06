@@ -17,92 +17,110 @@
             align-items: center; 
             justify-content: center; 
             height: 100vh; 
+            overflow: hidden;
+        }
+
+        /* Sekcja Górna - Logo i Tagline */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
         .logo {
-            font-size: 52px;
+            font-size: 64px;
             font-weight: 700;
             letter-spacing: -2px;
-            margin-bottom: 5px;
+            margin: 0;
         }
 
         .tagline {
-            color: #444;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 60px;
-        }
-
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 220px);
-            gap: 15px;
-        }
-
-        .nav-item {
-            padding: 20px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid #1a1a1a;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .red { color: #ff0000; }
-        .red:hover { border-color: #ff0000; background: rgba(255, 0, 0, 0.05); }
-
-        .green { color: #00ff00; }
-        .green:hover { border-color: #00ff00; background: rgba(0, 255, 0, 0.05); }
-
-        .blue { color: #0000ff; }
-        .blue:hover { border-color: #0000ff; background: rgba(0, 0, 255, 0.05); }
-
-        .yellow { color: #ffcc00; }
-        .yellow:hover { border-color: #ffcc00; background: rgba(255, 204, 0, 0.05); }
-
-        /* Przycisk White Paper - link zewnętrzny */
-        .white-paper { 
-            grid-column: span 2; 
-            color: #ffffff; 
-            border-color: #333;
-            margin-top: 10px;
-            padding: 25px;
-            font-size: 15px;
-        }
-        .white-paper:hover { border-color: #fff; background: rgba(255, 255, 255, 0.1); }
-
-        .status-bar {
-            position: absolute;
-            bottom: 40px;
-            width: 100%;
-            text-align: center;
-            font-size: 10px;
-            color: #222;
-            text-transform: uppercase;
+            font-size: 16px;
+            color: #888;
             letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        /* Centralny Graficzny Element (Kły ze zrzutu 222) */
+        .center-graphic {
+            margin-bottom: 80px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tusks {
+            width: 200px;
+            height: auto;
+            opacity: 0.9;
+        }
+
+        /* Dolny Pasek Nawigacji - Kolorowe Kwadraty (Zrzut 223) */
+        .nav-footer {
+            position: absolute;
+            bottom: 60px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-box {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #fff;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        /* Przypisanie kolorów 1:1 ze zrzutu ekranu */
+        .box-white  { background-color: transparent; border-color: #fff; } /* Home / Info */
+        .box-red    { background-color: #ff0000; border-color: #ff0000; } /* Problem */
+        .box-green  { background-color: #00ff00; border-color: #00ff00; } /* Genesis */
+        .box-yellow { background-color: #ffcc00; border-color: #ffcc00; } /* Trading Desk */
+        .box-blue   { background-color: #0000ff; border-color: #0000ff; } /* Matrix */
+        .box-wp     { background-color: #fff; border-color: #fff; }       /* White Paper */
+
+        .status-text {
+            position: absolute;
+            bottom: 20px;
+            font-size: 9px;
+            color: #333;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <div class="logo">BlackSlon</div>
-    <div class="tagline">The New Architecture of Energy</div>
-
-    <div class="nav-grid">
-        <a href="red.html" class="nav-item red">The Problem</a>
-        <a href="green.html" class="nav-item green">The Genesis</a>
-        <a href="blue.html" class="nav-item blue">Event Matrix</a>
-        <a href="terminal.html" class="nav-item yellow">Trading Desk</a>
-        
-        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="nav-item white-paper">Full White Paper</a>
+    <div class="header">
+        <h1 class="logo">BlackSlon</h1>
+        <div class="tagline">Energy Indexes™</div>
     </div>
 
-    <div class="status-bar">
-        BlackSlon **protocol** // Decentralized **Liquidty** engine // active_session_2026
+    <div class="center-graphic">
+        <svg class="tusks" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M70 40C70 40 40 80 40 120" stroke="white" stroke-width="8" stroke-linecap="round"/>
+            <path d="M130 40C130 40 160 80 160 120" stroke="white" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <div class="nav-footer">
+        <a href="index.html" class="nav-box box-white" title="Home"></a>
+        <a href="red.html" class="nav-item nav-box box-red" title="The Problem"></a>
+        <a href="green.html" class="nav-item nav-box box-green" title="Genesis"></a>
+        <a href="terminal.html" class="nav-item nav-box box-yellow" title="Trading Desk"></a>
+        <a href="blue.html" class="nav-item nav-box box-blue" title="Event Matrix"></a>
+        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="nav-box box-wp" title="Full White Paper"></a>
+    </div>
+
+    <div class="status-text">
+        BlackSlon **protocol** // Automated **Liquidty** Layer // v.2026.02
     </div>
 
 </body>
