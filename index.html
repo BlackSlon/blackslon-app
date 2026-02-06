@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackSlon Protocol</title>
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .logo-container {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .logo {
+            max-width: 400px; /* Rozmiar Twojego dużego logo */
+            height: auto;
+        }
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            min-width: 150px;
+            text-align: center;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .btn:hover { 
+            transform: translateY(-5px);
+            filter: brightness(1.2);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.1);
+        }
+        
+        /* Kolory przycisków */
+        .red { background-color: #FF0000; color: white; }
+        .green { background-color: #00FF00; color: black; }
+        .yellow { background-color: #FFFF00; color: black; }
+        .blue { background-color: #0000FF; color: white; }
+        .white { background-color: #FFFFFF; color: black; }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <img src="logo.png" alt="BLACKSLON PROTOCOL" class="logo">
+    </div>
+
+    <div class="nav-container">
+        <a href="red.html" class="btn red">Red</a>
+        <a href="green.html" class="btn green">Green</a>
+        <a href="trading.html" class="btn yellow">Yellow</a>
+        <a href="blue.html" class="btn blue">Blue</a>
+        <a href="whitepaper.html" class="btn white">White Paper</a>
+    </div>
+
+    <div style="position: absolute; bottom: 30px; color: #333; font-size: 10px; letter-spacing: 2px;">
+        BLACKSLON ENERGY LIQUIDITY PROTOCOL v1.0
+    </div>
+
+</body>
+</html>
