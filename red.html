@@ -10,35 +10,43 @@
         body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; line-height: 1.6; padding: 60px 40px; margin: 0; }
         .container { max-width: 1100px; margin: 0 auto; }
         
-        /* LOGO IDENTYCZNE JAK W BLUE.HTML */
-        .header-logo-container {
-            width: 100%;
+        /* LOGO - DODANE TAK, BY NIE RUSZAĆ RESZTY KONSTRUKCJI */
+        .logo-wrapper {
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 40px; /* Odstęp od nagłówka h1 */
+            width: 100%;
         }
-        .protocol-logo { 
+
+        .protocol-square { 
             width: 32px; 
             height: 32px; 
             border: 2px solid #fff; /* Cienka ramka */
-            background-color: #000; /* Czarny środek */
+            background-color: #000; /* Duży czarny środek */
             display: block;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
-        .protocol-logo:hover { 
+        .protocol-square:hover { 
             transform: scale(1.1); 
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
+        /* Nagłówki 1:1 - Czerwone, większe, bez Caps Locka */
         h1, h2 { color: #ff0000; font-size: 26px; font-weight: 700; margin-top: 50px; margin-bottom: 30px; text-align: left; }
+        
+        /* Treść - Jednolita wielkość czcionki 18px */
         p, li { font-size: 18px; color: #ccc; text-align: justify; margin-bottom: 25px; }
         
+        /* Lista z punktami */
         ul { list-style: none; padding: 0; margin-bottom: 30px; }
         li { position: relative; padding-left: 25px; margin-bottom: 20px; }
         li::before { content: "•"; color: #fff; position: absolute; left: 0; font-weight: bold; }
         
+        /* Pogrubienia wewnątrz tekstu */
         strong { color: #fff; font-weight: 700; }
+        
+        /* Kursywa dla specyficznych fraz (np. the pure geometry) */
         em { font-style: italic; color: #eee; }
 
         .back-btn { display: inline-block; margin-top: 60px; color: #444; text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #222; padding: 10px 20px; transition: 0.3s; }
@@ -47,8 +55,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="header-logo-container">
-            <a href="index.html" class="protocol-logo"></a>
+        <div class="logo-wrapper">
+            <a href="index.html" class="protocol-square"></a>
         </div>
 
         <h1>The Broken Architecture of European Energy Wholesale Markets</h1>
