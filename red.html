@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Broken Architecture - BlackSlon</title>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px; }
+        body { background-color: #000; color: #fff; font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; padding: 40px; }
         .container { max-width: 900px; margin: 0 auto; }
-        h1 { color: #ff0000; text-transform: none; border-bottom: 2px solid #ff0000; padding-bottom: 10px; font-size: 28px; margin-bottom: 30px; }
-        h2 { color: #ff4444; text-transform: none; font-size: 22px; margin-top: 40px; }
-        p { font-size: 18px; margin-bottom: 20px; text-align: justify; color: #ccc; }
+        
+        /* Ujednolicone nagłówki */
+        h1 { color: #ff0000; font-size: 24px; text-transform: none; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 30px; font-weight: 600; }
+        h2 { color: #ff4444; font-size: 20px; text-transform: none; margin-top: 40px; margin-bottom: 20px; font-weight: 600; }
+        
+        /* Standardowa wielkość tekstu dla wszystkiego */
+        p, li { font-size: 16px; color: #ccc; text-align: justify; margin-bottom: 20px; }
+        
         ul { list-style: none; padding: 0; }
-        li { margin-bottom: 25px; padding-left: 20px; border-left: 2px solid #ff0000; }
-        li strong { color: #fff; font-size: 19px; display: block; margin-bottom: 5px; text-transform: none; }
-        .back-btn { display: inline-block; margin-top: 40px; color: #fff; text-decoration: none; border: 1px solid #ff4444; padding: 10px 25px; transition: 0.3s; }
-        .back-btn:hover { background: #ff4444; color: #000; }
+        li { margin-bottom: 30px; padding-left: 20px; border-left: 2px solid #ff0000; }
+        
+        /* Tytuły wewnątrz listy - taka sama wielkość jak reszta, tylko pogrubione */
+        li strong { color: #fff; font-size: 16px; display: block; margin-bottom: 8px; font-weight: bold; }
+        
+        .back-btn { display: inline-block; margin-top: 40px; color: #fff; text-decoration: none; border: 1px solid #444; padding: 10px 20px; font-size: 14px; transition: 0.3s; }
+        .back-btn:hover { border-color: #ff4444; color: #ff4444; }
+        
         .highlight { color: #ff4444; font-weight: bold; }
     </style>
 </head>
