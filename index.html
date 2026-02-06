@@ -26,28 +26,31 @@
         }
 
         .brand {
-            font-size: 32px;
+            font-size: 38px;
             font-weight: 400;
             margin-bottom: 5px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .brand-sub {
             font-size: 14px;
             color: #888;
             margin-bottom: 40px;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
-        /* Twoje Logo BS_image.jpg - dopasowane rozmiarem */
+        /* Poprawiona sekcja logo */
         .bs-logo {
-            max-width: 400px; 
+            width: 380px; 
             height: auto;
             display: block;
             margin: 0 auto;
+            /* Dodajemy filtr, by czarny kwadrat Malewicza dobrze siedział w tle */
+            border: 1px solid #111;
         }
 
-        /* Dolna Nawigacja Kwadratowa */
+        /* Nawigacja Kwadratowa ze Zrzutu (223) */
         .nav-footer {
             position: absolute;
             bottom: 60px;
@@ -60,23 +63,24 @@
             height: 55px;
             border: 2px solid transparent;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.2s ease-in-out;
         }
 
-        .box-white  { border-color: #fff; background: transparent; }
-        .box-red    { background-color: #ff0000; }
-        .box-green  { background-color: #00ff00; }
-        .box-yellow { background-color: #ffcc00; }
-        .box-blue   { background-color: #0000ff; }
-        .box-wp     { background-color: #fff; }
+        /* Kolory 1:1 */
+        .box-white-stroke { border: 2px solid #fff; background: transparent; } /* Home */
+        .box-red    { background-color: #ff0000; } /* Problem */
+        .box-green  { background-color: #00ff00; } /* Genesis */
+        .box-yellow { background-color: #ffcc00; } /* Trading */
+        .box-blue   { background-color: #0000ff; } /* Matrix */
+        .box-white-solid { background-color: #fff; } /* White Paper */
 
-        .nav-box:hover { transform: scale(1.1); box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+        .nav-box:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.15); }
 
         .status-bar {
             position: absolute;
             bottom: 20px;
-            font-size: 9px;
-            color: #222;
+            font-size: 10px;
+            color: #333;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -87,20 +91,21 @@
     <div class="main-container">
         <div class="brand">BlackSlon</div>
         <div class="brand-sub">Energy Indexes™</div>
+        
         <img src="BS_image.jpg" alt="BlackSlon Protocol" class="bs-logo">
     </div>
 
     <div class="nav-footer">
-        <a href="index.html" class="nav-box box-white" title="Home"></a>
+        <a href="index.html" class="nav-box box-white-stroke" title="Home"></a>
         <a href="red.html" class="nav-box box-red" title="Problem"></a>
         <a href="green.html" class="nav-box box-green" title="Genesis"></a>
         <a href="trading.html" class="nav-box box-yellow" title="Trading Desk"></a>
         <a href="blue.html" class="nav-box box-blue" title="Event Matrix"></a>
-        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="nav-box box-wp" title="White Paper"></a>
+        <a href="https://github.com/BlackSlon/BlackSlon-Protocol/blob/main/docs/white-paper.md" target="_blank" class="nav-box box-white-solid" title="White Paper"></a>
     </div>
 
     <div class="status-bar">
-        BlackSlon **protocol** // Automated **Liquidty** Layer // v.2026.02
+        BLACKSLON **PROTOCOL** // AUTOMATED **LIQUIDTY** LAYER // V.2026.02
     </div>
 
 </body>
