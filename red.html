@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Broken Architecture - BlackSlon</title>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px; }
-        .container { max-width: 1000px; margin: 0 auto; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
         
-        /* Nagłówki - większe i czerwone */
-        h1, h2 { color: #ff0000; font-size: 28px; text-transform: none; font-weight: bold; margin-top: 50px; margin-bottom: 25px; }
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; line-height: 1.6; padding: 60px 40px; margin: 0; }
+        .container { max-width: 1100px; margin: 0 auto; }
         
-        /* Cały tekst - jednolita wielkość czcionki */
-        p, li, span { font-size: 18px; color: #ccc; text-align: justify; margin-bottom: 20px; }
+        /* Nagłówki 1:1 - Czerwone, większe, bez Caps Locka */
+        h1, h2 { color: #ff0000; font-size: 26px; font-weight: 700; margin-top: 50px; margin-bottom: 30px; text-align: left; }
         
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 20px; position: relative; padding-left: 20px; }
-        li::before { content: "•"; color: #fff; position: absolute; left: 0; }
+        /* Treść - Jednolita wielkość czcionki 18px */
+        p, li { font-size: 18px; color: #ccc; text-align: justify; margin-bottom: 25px; }
         
-        /* Pogrubienia 1:1 ze screenów */
-        strong { color: #fff; font-weight: bold; }
+        /* Lista z punktami */
+        ul { list-style: none; padding: 0; margin-bottom: 30px; }
+        li { position: relative; padding-left: 25px; margin-bottom: 20px; }
+        li::before { content: "•"; color: #fff; position: absolute; left: 0; font-weight: bold; }
         
-        .back-btn { display: inline-block; margin-top: 60px; color: #fff; text-decoration: none; border: 1px solid #333; padding: 10px 25px; font-size: 14px; transition: 0.3s; }
-        .back-btn:hover { border-color: #ff0000; color: #ff0000; }
+        /* Pogrubienia wewnątrz tekstu */
+        strong { color: #fff; font-weight: 700; }
+        
+        /* Kursywa dla specyficznych fraz (np. the pure geometry) */
+        em { font-style: italic; color: #eee; }
+
+        .back-btn { display: inline-block; margin-top: 60px; color: #444; text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #222; padding: 10px 20px; transition: 0.3s; }
+        .back-btn:hover { color: #ff0000; border-color: #ff0000; }
     </style>
 </head>
 <body>
@@ -51,7 +57,21 @@
         <h2>Energy as the Base Currency of Macro Arbitrage</h2>
         <p>Despite the systemic failures we have witnessed over the years, we hold a radical conviction that Energy (both Primary Energy, i.e., Commodities and Final Energy, i.e., Electricity) has transcended its role as a mere commodity/product to become the <strong>New Ultimate Base Currency of the Global Economy</strong>. While fiat systems fluctuate under political pressure, a kWh remains a universal constant of value. Our <strong>protocol</strong> is built on this truth - moving beyond legacy finance to a world where energy acts as the fundamental unit of settlement and the ultimate tool for Macro Arbitrage.</p>
 
-        <a href="index.html" class="back-btn">← Back to Protocol</a>
+        <p>We believe that Energy will dictate economic trends for decades to come, functioning as a currency through several critical dimensions:</p>
+
+        <ul>
+            <li><strong>Substitution of Labour:</strong> In the AI-dominated landscape, energy has emerged as the ultimate substitute for human labour, transforming electricity into primary driver of service sector inflation. The transition makes modern digital services, with data centres, like the heavy industries of the 21st century. That is hyper-dependent on power prices. Consequently, the global economy is entering a phase where power costs, rather than labour, dictates the final price of digital and professional services.</li>
+            <li><strong>Global Standard:</strong> While fiat currencies can be printed, energy must be extracted or generated, it defines the boundaries of growth and the real value of assets in a shifting geopolitical landscape.</li>
+            <li><strong>Digital Anchor:</strong> As the foundational cost and the ultimate validator of the cryptocurrency ecosystem, primarily within the Bitcoin network. Energy is not just a cost, it is the raw material converted into security and financial sovereignty, where Bitcoin mining acts as a direct arbitrage between global electricity prices and digital asset value.</li>
+            <li><strong>The Ultimate Inflation Driver:</strong> Energy is no longer just a raw material but the primary driver of inflation and the cost of production for everything from food to industrial metals.</li>
+            <li><strong>Carbon-Backed Value:</strong> Through emission trading systems, energy has become a dual-monetary system where CO2 costs act as a global tax on production and capital flow.</li>
+        </ul>
+
+        <p>In our view, energy flow may be <em>the pure geometry</em> of the modern market, yet its complexity has kept it out of reach for too many, for too long. BlackSlon changes this by bringing transparency and <strong>Liquidty</strong> to regional energy pricing. We are opening the gates for everyone - from individual participants to small and big enterprises - allowing them to gain direct exposure and hedge against energy price movements. By removing the barriers that once made these markets invisible to the public, we empower every user to navigate energy volatility using a simple, tokenized standard that was previously reserved only for global institutions.</p>
+
+        <p>To bridge this gap between raw energy flows and individual participation, we have built a high-integrity financial bridge. This infrastructure transforms complex regional data into a liquid, executable format, backed by the most reliable standards of the digital age.</p>
+
+        <a href="index.html" class="back-btn">← Exit Protocol</a>
     </div>
 </body>
 </html>
