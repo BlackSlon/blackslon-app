@@ -1,68 +1,41 @@
-// Wklej to w miejscu, gdzie wcześniej był przycisk "VIEW INDEXES"
-<div style={{ 
-  display: 'flex', 
-  flexDirection: 'column', 
-  alignItems: 'center', 
-  gap: '40px',
-  marginTop: '20px' 
-}}>
-  {/* LOGO BLACKSLON */}
-  <div style={{ fontSize: '48px', fontWeight: 'bold', letterSpacing: '8px', color: '#fff' }}>
-    BLACKSLON
-  </div>
+'use client'; // Musi być na samej górze!
 
-  {/* SIATKA 5 KWADRATÓW */}
-  <div style={{ 
-    display: 'grid', 
-    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
-    gap: '20px', 
-    width: '100%', 
-    maxWidth: '900px',
-    padding: '20px'
-  }}>
-    
-    {/* ŻÓŁTY - BSEI */}
-    <div onClick={() => window.scrollTo({top: 800, behavior: 'smooth'})} style={squareStyle('#FFD700', '#000')}>
-      <span style={{fontWeight: 'bold'}}>BSEI</span>
-      <span style={{fontSize: '12px', textAlign: 'center'}}>Indexes Terminal</span>
-    </div>
+import React from 'react';
+// ... inne importy, jeśli masz ...
 
-    {/* CZERWONY - ARCHITECTURE */}
-    <div style={squareStyle('#FF4136', '#fff')}>
-      <span style={{fontWeight: 'bold', textAlign: 'center'}}>Broken Market Architecture</span>
-    </div>
+export default function Home() {
+  return (
+    <main style={{ backgroundColor: '#000', minHeight: '100vh', color: '#fff' }}>
+      
+      {/* SEKCJA MENU - To co wkleiłeś na image_68a237.jpg */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px', paddingTop: '100px' }}>
+        <div style={{ fontSize: '48px', fontWeight: 'bold', letterSpacing: '8px' }}>BLACKSLON</div>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '20px', width: '900px' }}>
+          <div onClick={() => window.scrollTo({top: 900, behavior: 'smooth'})} style={squareStyle('#FFD700', '#000')}>BSEI</div>
+          <div style={squareStyle('#FF4136', '#fff')}>Broken Market Architecture</div>
+          <div style={squareStyle('#2ECC40', '#fff')}>Manifesto</div>
+          <div style={squareStyle('#0074D9', '#fff')}>Matrix of BS Events</div>
+          <div style={squareStyle('#FFFFFF', '#000')}>White Paper</div>
+        </div>
+      </div>
 
-    {/* ZIELONY - MANIFESTO */}
-    <div style={squareStyle('#2ECC40', '#fff')}>
-      <span style={{fontWeight: 'bold'}}>Manifesto</span>
-    </div>
+      {/* TUTAJ DALSZA CZĘŚĆ TWOJEJ STRONY (TERMINAL INDEKSÓW) */}
 
-    {/* NIEBIESKI - MATRIX */}
-    <div style={squareStyle('#0074D9', '#fff')}>
-      <span style={{fontWeight: 'bold', textAlign: 'center'}}>Matrix of BS Events</span>
-    </div>
+    </main>
+  );
+}
 
-    {/* BIAŁY - WHITE PAPER */}
-    <div style={squareStyle('#FFFFFF', '#000')}>
-      <span style={{fontWeight: 'bold'}}>White Paper</span>
-    </div>
-
-  </div>
-</div>
-
-// DODAJ TĘ FUNKCJĘ POMOCNICZĄ NA DOLE PLIKU LUB NAD KOMPONENTEM
+// TA FUNKCJA MUSI BYĆ NA SAMYM DOLE, POZA NAWIASEM FUNKCJI HOME
 const squareStyle = (bgColor: string, textColor: string) => ({
   backgroundColor: bgColor,
   color: textColor,
   height: '150px',
   display: 'flex',
-  flexDirection: 'column' as 'column',
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: '12px',
   cursor: 'pointer',
-  padding: '15px',
-  transition: 'transform 0.2s',
-  boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-  border: 'none'
+  textAlign: 'center' as 'center',
+  fontWeight: 'bold'
 });
