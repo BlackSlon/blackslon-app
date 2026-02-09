@@ -42,13 +42,13 @@ export default function TerminalPage() {
             { country: 'IT', index: 'BS-E-IT', price: calculateWeightPrice({ fw: 109.3, fm: 109.3, fq: 109.3, fy: 109.3 }) / 10, role: 'South Demand', oi: 750000 }
         ],
         nat_gas: [
-            { country: 'NL', index: 'BS-G-NL', price: calculateWeightPrice({ fw: 32.8, fm: 32.8, fq: 32.8, fy: 32.8 }) / 10, role: 'EU Benchmark', oi: 5600000 },
-            { country: 'PL', index: 'BS-G-PL', price: calculateWeightPrice({ fw: 31.2, fm: 31.2, fq: 31.2, fy: 31.2 }) / 10, role: 'Growth', oi: 1200000 },
-            { country: 'UA', index: 'BS-G-UA', price: calculateWeightPrice({ fw: 34.1, fm: 34.1, fq: 34.1, fy: 34.1 }) / 10, role: 'Storage', oi: 8900000 },
-            { country: 'IT', index: 'BS-G-IT', price: calculateWeightPrice({ fw: 35.45, fm: 35.45, fq: 35.45, fy: 35.45 }) / 10, role: 'South Demand', oi: 750000 },
-            { country: 'UK', index: 'BS-G-UK', price: calculateWeightPrice({ fw: 27.9, fm: 27.9, fq: 27.9, fy: 27.9 }) / 10, role: 'Island Market', oi: 420000 },
-            { country: 'TR', index: 'BS-G-TR', price: calculateWeightPrice({ fw: 36.8, fm: 36.8, fq: 36.8, fy: 36.8 }) / 10, role: 'Asian Corridor', oi: 310000 },
-            { country: 'AT', index: 'BS-G-AT', price: calculateWeightPrice({ fw: 38.6, fm: 38.6, fq: 38.6, fy: 38.6 }) / 10, role: 'CEE Hub', oi: 640000 },
+            { country: 'NL', index: 'BS-G-NL', price: calculateWeightPrice({ fw: 36.51, fm: 35.68, fq: 31.65, fy: 27.04 }) / 10, role: 'EU Benchmark', oi: 5600000 },
+            { country: 'PL', index: 'BS-G-PL', price: calculateWeightPrice({ fw: 45.53, fm: 39.81, fq: 35.43, fy: 32.31 }) / 10, role: 'Growth', oi: 1200000 },
+            { country: 'FR', index: 'BS-G-FR', price: calculateWeightPrice({ fw: 34.00, fm: 34.00, fq: 30.60, fy: 26.09 }) / 10, role: 'LNG', oi: 1800000 },
+            { country: 'IT', index: 'BS-G-IT', price: calculateWeightPrice({ fw: 36.30, fm: 36.30, fq: 34.48, fy: 29.03 }) / 10, role: 'South Demand', oi: 750000 },
+            { country: 'UK', index: 'BS-G-UK', price: ((calculateWeightPrice({ fw: 89, fm: 89.4, fq: 78.39, fy: 70.04 }) * 29.3071) / 100) * 1.15, role: 'Island Market', oi: 420000 },
+            { country: 'DE', index: 'BS-G-DE', price: calculateWeightPrice({ fw: 38.73, fm: 37.69, fq: 33.38, fy: 28.89 }) / 10, role: 'Physical Flow', oi: 3200000 },
+            { country: 'AT', index: 'BS-G-AT', price: calculateWeightPrice({ fw: 38.63, fm: 37.94, fq: 34.86, fy: 30.18 }) / 10, role: 'CEE Hub', oi: 640000 },
             { country: 'BG', index: 'BS-G-BG', price: calculateWeightPrice({ fw: 32.5, fm: 32.5, fq: 32.5, fy: 32.5 }) / 10, role: 'Balkan Entry', oi: 220000 }
         ]
     });
