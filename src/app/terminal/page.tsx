@@ -1,107 +1,176 @@
-'use client'
+'use client';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
-import { useState, useEffect } from 'react'
-import FormulaDisplay from '@/components/FormulaDisplay'
+export default function TerminalPage() {
+    const [activeTab, setActiveTab] = useState('power');
+    const [prices, setPrices] = useState({
+        power: [
+            { country: 'DE', index: 'BS-E-DE', price: 9.15, role: 'Anchor', oi: 1245000 },
+            { country: 'PL', index: 'BS-E-PL', price: 10.21, role: 'Coal Base', oi: 890000 },
+            { country: 'FR', index: 'BS-E-FR', price: 7.16, role: 'Nuclear Base', oi: 2100000 },
+            { country: 'RO', index: 'BS-E-RO', price: 9.14, role: 'Strong Flow', oi: 180000 },
+            { country: 'NO', index: 'BS-E-NO', price: 8.36, role: 'Hydro', oi: 1100000 },
+            { country: 'BG', index: 'BS-E-BG', price: 10.54, role: 'Balkan Entry', oi: 220000 },
+            { country: 'GB', index: 'BS-E-GB', price: 9.31, role: 'Island Market', oi: 95000 },
+            { country: 'HU', index: 'BS-E-HU', price: 10.62, role: 'CEE Hub', oi: 450000 },
+            { country: 'IT', index: 'BS-E-IT', price: 10.93, role: 'South Demand', oi: 750000 }
+        ],
+        nat_gas: [
+            { country: 'NL', index: 'BS-G-NL', price: 28.50, role: 'EU Benchmark', oi: 5600000 },
+            { country: 'PL', index: 'BS-G-PL', price: 31.20, role: 'Growth', oi: 1200000 },
+            { country: 'UA', index: 'BS-G-UA', price: 34.10, role: 'Storage', oi: 8900000 },
+            { country: 'IT', index: 'BS-G-IT', price: 35.45, role: 'South Demand', oi: 750000 },
+            { country: 'UK', index: 'BS-G-UK', price: 27.90, role: 'Island Market', oi: 420000 },
+            { country: 'TR', index: 'BS-G-TR', price: 36.80, role: 'Asian Corridor', oi: 310000 },
+            { country: 'AT', index: 'BS-G-AT', price: 32.10, role: 'CEE Hub', oi: 640000 },
+            { country: 'BG', index: 'BS-G-BG', price: 33.50, role: 'Balkan Entry', oi: 220000 }
+        ],
+        lpg: [
+            { country: 'PL', index: 'BS-LPG-PL', price: 0.58, role: 'Regional Hub', oi: 4500000 },
+            { country: 'DE', index: 'BS-LPG-DE', price: 0.62, role: 'Transit West', oi: 1200000 },
+            { country: 'UA', index: 'BS-LPG-UA', price: 0.68, role: 'Critical Supply', oi: 3100000 },
+            { country: 'IT', index: 'BS-LPG-IT', price: 0.65, role: 'Mediterranean', oi: 850000 },
+            { country: 'BE', index: 'BS-LPG-BE', price: 0.56, role: 'Import Port', oi: 5200000 },
+            { country: 'TR', index: 'BS-LPG-TR', price: 0.71, role: 'East Gateway', oi: 440000 },
+            { country: 'FR', index: 'BS-LPG-FR', price: 0.64, role: 'Mainland', oi: 980000 },
+            { country: 'LT', index: 'BS-LPG-LT', price: 0.59, role: 'Baltic Entry', oi: 150000 }
+        ],
+        diesel: [
+            { country: 'ARA', index: 'BS-D-ARA', price: 745.00, role: 'Global Hub', oi: 150000 },
+            { country: 'DE', index: 'BS-D-DE', price: 762.50, role: 'Logistics', oi: 85000 },
+            { country: 'PL', index: 'BS-D-PL', price: 758.20, role: 'Import Base', oi: 120000 },
+            { country: 'FR', index: 'BS-D-FR', price: 768.40, role: 'Refinery', oi: 95000 },
+            { country: 'IT', index: 'BS-D-IT', price: 772.10, role: 'Med Supply', oi: 64000 },
+            { country: 'ES', index: 'BS-D-ES', price: 765.30, role: 'Iberian Focus', oi: 52000 },
+            { country: 'UK', index: 'BS-D-UK', price: 755.90, role: 'Island Dist', oi: 44000 },
+            { country: 'UA', index: 'BS-D-UA', price: 810.20, role: 'Strategic', oi: 230000 }
+        ],
+        gasoline: [
+            { country: 'ARA', index: 'BS-GS-ARA', price: 720.00, role: 'Global Hub', oi: 95000 },
+            { country: 'DE', index: 'BS-GS-DE', price: 742.30, role: 'Consumption', oi: 110000 },
+            { country: 'PL', index: 'BS-GS-PL', price: 735.80, role: 'Storage', oi: 85000 },
+            { country: 'UK', index: 'BS-GS-UK', price: 715.40, role: 'Atlantic Flow', oi: 32000 },
+            { country: 'ES', index: 'BS-GS-ES', price: 748.90, role: 'South Exit', oi: 41000 },
+            { country: 'FR', index: 'BS-GS-FR', price: 738.20, role: 'Mainland', oi: 67000 },
+            { country: 'CZ', index: 'BS-GS-CZ', price: 744.15, role: 'Landlocked', oi: 22000 },
+            { country: 'RO', index: 'BS-GS-RO', price: 730.50, role: 'Black Sea', oi: 18000 }
+        ]
+    });
 
-// ... (Interface definitions i MARKETS_DATA zostają te same co wcześniej)
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPrices(prev => {
+                const next = { ...prev };
+                const vol = (activeTab === 'power' || activeTab === 'nat_gas' || activeTab === 'lpg') ? 0.01 : 0.15;
+                next[activeTab] = next[activeTab].map(m => {
+                    const rawNewPrice = m.price + (Math.random() - 0.5) * vol;
+                    return {
+                        ...m, 
+                        price: +(Math.max(0.01, rawNewPrice)).toFixed(2),
+                        oi: Math.max(0, m.oi + Math.floor((Math.random() - 0.4) * 100))
+                    }
+                });
+                return next;
+            });
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [activeTab]);
 
-const calculateFinalPrice = (data: any) => ((data.FW * 0.1) + (data.FM * 0.4) + (data.FQ * 0.25) + (data.FY * 0.25)) / 10
+    const getAccent = () => {
+        if(activeTab === 'power') return '#FFD700';
+        if(activeTab === 'nat_gas') return '#87CEEB';
+        if(activeTab === 'lpg') return '#9370DB';
+        if(activeTab === 'diesel') return '#A9A9A9';
+        if(activeTab === 'gasoline') return '#FF4444'; 
+        return '#00ced1'; 
+    };
 
-export default function Home() {
-  const [showDashboard, setShowDashboard] = useState(false)
-  const [activeTab, setActiveTab] = useState<'power' | 'gas'>('power')
-  const [pricesState, setPricesState] = useState<any>({
-    power: Object.entries(MARKETS_DATA.POWER).map(([c, d]) => ({ country: c, index: `BS-E-${c}`, price: calculateFinalPrice(d), role: 'Market' })),
-    gas: Object.entries(MARKETS_DATA.GAS).map(([c, d]) => ({ country: c, index: `BS-G-${c}`, price: calculateFinalPrice(d), role: 'Market' }))
-  })
-  const [selectedMarket, setSelectedMarket] = useState<any>(pricesState.power[0])
+    const getUnit = () => (activeTab === 'power' || activeTab === 'nat_gas') ? 'kWh eq' : 'L';
+    const getLabelQuantity = () => (activeTab === 'power' || activeTab === 'nat_gas') ? '100' : '10';
 
-  // DASHBOARD RENDER (Zmniejszony do ok. 67%)
-  if (!showDashboard) {
+    const displayPrice = (val) => {
+        if (activeTab === 'lpg') return (val * 10).toFixed(2);
+        if (activeTab === 'diesel' || activeTab === 'gasoline') return (val / 100).toFixed(2);
+        return val.toFixed(2);
+    };
+
+    const calculateBenchmarkValue = () => {
+        const avg = prices[activeTab].reduce((a, b) => a + b.price, 0) / prices[activeTab].length;
+        if (activeTab === 'lpg') return (avg * 10).toFixed(2);
+        if (activeTab === 'diesel' || activeTab === 'gasoline') return (avg / 100).toFixed(2);
+        return avg.toFixed(2);
+    };
+
+    const getFormattedIndexName = () => {
+        const name = activeTab.replace('_', ' ');
+        return `BLACKSLON EUROPEAN ${name.toUpperCase()} INDEX`;
+    };
+
     return (
-      <div style={{ height: '100vh', background: '#000', color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', fontFamily: 'monospace' }}>
-        <h1 style={{ fontSize: '42px', margin: 0 }}>BlackSlon</h1>
-        <p style={{ color: '#666', letterSpacing: '3px', marginBottom: '30px', fontSize: '14px' }}>ZERO SPREAD | ZERO EXPIRY | LIQUIDTY 24/7</p>
-        <button onClick={() => setShowDashboard(true)} style={{ background: '#FFD700', color: '#000', padding: '12px 28px', border: 'none', fontWeight: 'bold', cursor: 'pointer', borderRadius: '4px' }}>VIEW INDEXES</button>
-      </div>
-    )
-  }
-
-  return (
-    <div style={{ minHeight: '100vh', background: '#000', color: '#fff', fontFamily: 'monospace', padding: '25px' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}> {/* Zmniejszona szerokość max */}
-        
-        {/* Header - Kompaktowy */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px', borderBottom: '1px solid #1a1a1a', paddingBottom: '15px' }}>
-          <h1 style={{ fontSize: '18px', fontWeight: 'bold', margin: 0 }}>BlackSlon Energy Indexes</h1>
-          <button style={{ background: '#fff', color: '#000', padding: '6px 14px', border: 'none', fontWeight: 'bold', cursor: 'pointer', fontSize: '11px' }}>CONNECT WALLET</button>
-        </div>
-
-        {/* Tabs - Mniejsze */}
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
-          {['power', 'gas'].map((tab) => (
-            <button 
-              key={tab}
-              onClick={() => setActiveTab(tab as 'power' | 'gas')}
-              style={{ 
-                background: activeTab === tab ? (tab === 'power' ? '#FFD700' : '#00CED1') : 'transparent',
-                color: activeTab === tab ? '#000' : '#888',
-                border: `1px solid ${tab === 'power' ? '#FFD700' : '#00CED1'}`,
-                padding: '6px 12px', cursor: 'pointer', fontWeight: 'bold', textTransform: 'uppercase', fontSize: '10px',
-                transition: '0.2s'
-              }}
-            >BlackSlon {tab} Indexes</button>
-          ))}
-        </div>
-
-        {/* Grid - Gęstszy i mniejszy */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', // Mniejsze kafelki
-          gap: '12px', 
-          marginBottom: '40px' 
-        }}>
-          {pricesState[activeTab].map((m: any) => (
-            <div 
-              key={m.index} 
-              onClick={() => setSelectedMarket(m)}
-              style={{ 
-                background: '#0a0a0a', padding: '15px', border: `1px solid ${selectedMarket.index === m.index ? '#FFD700' : '#1a1a1a'}`, cursor: 'pointer',
-                transform: selectedMarket.index === m.index ? 'scale(0.98)' : 'scale(1)', // Reakcja na zaznaczenie
-                transition: '0.1s'
-              }}
-            >
-              <div style={{ fontSize: '10px', color: '#555' }}>{m.country} // INDEX</div>
-              <div style={{ fontWeight: 'bold', fontSize: '14px', color: activeTab === 'power' ? '#FFD700' : '#00CED1' }}>{m.index}</div>
-              <div style={{ margin: '10px 0', fontSize: '20px', fontWeight: 'bold' }}>{m.price.toFixed(2)} <span style={{ fontSize: '10px', color: '#444' }}>€/100 kWh</span></div>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <button 
-                  style={{ flex: 1, background: 'transparent', border: '1px solid #22c55e', color: '#22c55e', padding: '5px', cursor: 'pointer', fontWeight: 'bold', fontSize: '10px' }}
-                  onMouseDown={(e) => e.currentTarget.style.background = '#22c55e22'}
-                  onMouseUp={(e) => e.currentTarget.style.background = 'transparent'}
-                >BUY</button>
-                <button 
-                  style={{ flex: 1, background: 'transparent', border: '1px solid #ef4444', color: '#ef4444', padding: '5px', cursor: 'pointer', fontWeight: 'bold', fontSize: '10px' }}
-                  onMouseDown={(e) => e.currentTarget.style.background = '#ef444422'}
-                  onMouseUp={(e) => e.currentTarget.style.background = 'transparent'}
-                >SELL</button>
-              </div>
+        <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '20px' }}>
+            {/* LOGO LINK DO STRONY GŁÓWNEJ */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
+                <Link href="/" style={{ width: '32px', height: '32px', border: '2px solid #fff', backgroundColor: '#000', display: 'block' }}></Link>
             </div>
-          ))}
-        </div>
 
-        {/* Formula Display - Uporządkowany kontener */}
-        <div style={{ 
-          background: '#050505', 
-          padding: '20px', 
-          border: '1px solid #1a1a1a', 
-          borderRadius: '4px',
-          fontSize: '13px' // Mniejsza czcionka dla formuły
-        }}>
-          <h3 style={{ fontSize: '14px', marginTop: 0, color: '#FFD700' }}>Protocol Analysis: {selectedMarket.index}</h3>
-          <FormulaDisplay activeMarket={selectedMarket} />
-        </div>
-      </div>
-    </div>
-  )
+            <div style={{ background: '#000', color: '#fff', fontFamily: 'monospace', padding: '15px', border: `2px solid ${getAccent()}`, maxWidth: '1000px', margin: 'auto', transition: 'border-color 0.5s ease' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #333', marginBottom: '20px', paddingBottom: '10px' }}>
+                    <div>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold' }}>BlackSlon Energy Indexes</div>
+                        <div style={{ fontSize: '9px', color: '#666' }}>Zero Spread | Zero Expiry | 24/7 **Liquidty** protocol</div>
+                    </div>
+                    <button style={{ background: '#fff', color: '#000', border: '1px solid #fff', padding: '5px 10px', fontSize: '9px', cursor: 'pointer', fontWeight: 'bold' }}>CONNECT WALLET</button>
+                </div>
+
+                <div style={{ display: 'flex', marginBottom: '25px', gap: '4px', flexWrap: 'wrap' }}>
+                    {Object.keys(prices).map(t => (
+                        <button key={t} onClick={() => setActiveTab(t)} style={{ 
+                            background: activeTab === t ? getAccent() : 'transparent', 
+                            color: activeTab === t ? '#000' : '#fff', 
+                            border: `1px solid ${getAccent()}`, 
+                            padding: '8px 10px', cursor: 'pointer', fontSize: '9px', fontWeight: 'bold', textTransform: 'uppercase' 
+                        }}> BlackSlon {t.replace('_', ' ')} </button>
+                    ))}
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '8px' }}>
+                    {prices[activeTab].map(m => (
+                        <div key={m.index} style={{ background: '#050505', padding: '12px', border: '1px solid #1a1a1a' }}>
+                            <div style={{ fontSize: '8px', color: '#444' }}>{m.country} // {m.role}</div>
+                            <div style={{ fontWeight: 'bold', fontSize: '11px' }}>{m.index}</div>
+                            <div style={{ margin: '8px 0' }}>
+                                <span style={{ fontSize: '20px', fontWeight: 'bold', color: getAccent() }}>
+                                    {displayPrice(m.price)}
+                                </span>
+                                <span style={{ fontSize: '7px', color: '#444', marginLeft: '3px' }}>€/{getLabelQuantity()} {getUnit()}</span>
+                            </div>
+                            <div style={{ display: 'flex', gap: '4px', marginBottom: '10px' }}>
+                                <button style={{ flex: 1, background: 'transparent', color: '#00ff88', border: '1px solid #00ff88', padding: '6px 0', fontSize: '10px', fontWeight: 'bold', cursor: 'pointer' }}>BUY</button>
+                                <button style={{ flex: 1, background: 'transparent', color: '#ff4444', border: '1px solid #ff4444', padding: '6px 0', fontSize: '10px', fontWeight: 'bold', cursor: 'pointer' }}>SELL</button>
+                            </div>
+                            <div style={{ borderTop: '1px solid #111', paddingTop: '8px' }}>
+                                <div style={{ fontSize: '7px', color: '#444' }}>OPEN INTEREST</div>
+                                <div style={{ fontSize: '10px', color: '#fff' }}>{m.oi.toLocaleString()} {getUnit()}</div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div style={{ marginTop: '20px', padding: '20px 10px', border: '2px solid #333', background: '#050505', textAlign: 'center', borderColor: getAccent(), transition: 'border-color 0.5s' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '16px', fontWeight: 'bold', color: '#fff' }}>
+                            {getFormattedIndexName()}:
+                        </span>
+                        <span style={{ fontSize: '22px', fontWeight: 'bold', color: getAccent() }}>
+                            {calculateBenchmarkValue()}
+                        </span>
+                        <span style={{ fontSize: '9px', color: '#666' }}>
+                            €/{getLabelQuantity()} {getUnit()}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
 }
