@@ -17,13 +17,21 @@ export default function Home() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', width: '100%', maxWidth: '600px' }}>
-          <Link href="/terminal" style={{ textDecoration: 'none' }}>
+          <Link href="/trading.html" style={{ textDecoration: 'none' }}>
             <div style={squareStyle('#FFD700', '#000')}>BlackSlon Energy Indexes</div>
           </Link>
-          <div style={squareStyle('#FF4136', '#fff')}>Broken Market Architecture</div>
-          <div style={squareStyle('#2ECC40', '#fff')}>Manifesto</div>
-          <div style={squareStyle('#0074D9', '#fff')}>Matrix of BlackSlon Events</div>
-          <div style={squareStyle('#FFFFFF', '#000')}>White Paper</div>
+          <Link href="/red.html" style={{ textDecoration: 'none' }}>
+            <div style={squareStyle('#FF4136', '#fff')}>Broken Market Architecture</div>
+          </Link>
+          <Link href="/green.html" style={{ textDecoration: 'none' }}>
+            <div style={squareStyle('#2ECC40', '#fff')}>Manifesto</div>
+          </Link>
+          <Link href="/blue.html" style={{ textDecoration: 'none' }}>
+            <div style={squareStyle('#0074D9', '#fff')}>Matrix of BlackSlon Events</div>
+          </Link>
+          <Link href="/white-paper.html" style={{ textDecoration: 'none' }}>
+            <div style={squareStyle('#FFFFFF', '#000')}>White Paper</div>
+          </Link>
         </div>
       </div>
     </main>
