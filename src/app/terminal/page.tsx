@@ -46,7 +46,7 @@ export default function TerminalPage() {
             { country: 'PL', index: 'BS-G-PL', price: calculateWeightPrice({ fw: 45.53, fm: 39.81, fq: 35.43, fy: 32.31 }) / 10, role: 'Growth', oi: 1200000 },
             { country: 'FR', index: 'BS-G-FR', price: calculateWeightPrice({ fw: 34.00, fm: 34.00, fq: 30.60, fy: 26.09 }) / 10, role: 'LNG', oi: 1800000 },
             { country: 'IT', index: 'BS-G-IT', price: calculateWeightPrice({ fw: 36.30, fm: 36.30, fq: 34.48, fy: 29.03 }) / 10, role: 'South Demand', oi: 750000 },
-            { country: 'UK', index: 'BS-G-UK', price: ((calculateWeightPrice({ fw: 89, fm: 89.4, fq: 78.39, fy: 70.04 }) * 29.3071) / 100) * 1.15, role: 'Island Market', oi: 420000 },
+            { country: 'UK', index: 'BS-G-UK', price: 3.246, role: 'Island Market', oi: 420000 }, // Wartość przeliczona zgodnie z arkuszem BlackSlon (GBp/therm -> EUR/MWh unit)
             { country: 'DE', index: 'BS-G-DE', price: calculateWeightPrice({ fw: 38.73, fm: 37.69, fq: 33.38, fy: 28.89 }) / 10, role: 'Physical Flow', oi: 3200000 },
             { country: 'AT', index: 'BS-G-AT', price: calculateWeightPrice({ fw: 38.63, fm: 37.94, fq: 34.86, fy: 30.18 }) / 10, role: 'CEE Hub', oi: 640000 },
             { country: 'BG', index: 'BS-G-BG', price: calculateWeightPrice({ fw: 32.5, fm: 32.5, fq: 32.5, fy: 32.5 }) / 10, role: 'Balkan Entry', oi: 220000 }
