@@ -106,16 +106,34 @@ export default function TerminalPage() {
 
                 {/* PRZEŁĄCZNIKI: TYLKO POWER I GAS */}
                 <div style={{ display: 'flex', marginBottom: '25px', gap: '4px' }}>
-                    <button onClick={() => setActiveTab('power')} style={{ 
-                        background: activeTab === 'power' ? '#FFD700' : 'transparent', 
-                        color: activeTab === 'power' ? '#000' : '#fff', 
-                        border: '1px solid #FFD700', padding: '8px 15px', cursor: 'pointer', fontSize: '9px', fontWeight: 'bold' 
-                    }}> BLACKSLON POWER </button>
-                    <button onClick={() => setActiveTab('nat_gas')} style={{ 
-                        background: activeTab === 'nat_gas' ? '#87CEEB' : 'transparent', 
-                        color: activeTab === 'nat_gas' ? '#000' : '#fff', 
-                        border: '1px solid #87CEEB', padding: '8px 15px', cursor: 'pointer', fontSize: '9px', fontWeight: 'bold' 
-                    }}> BLACKSLON GAS </button>
+                    <button
+                        onClick={() => setActiveTab('power')}
+                        style={{
+                            padding: '12px 24px',
+                            background: activeTab === 'power' ? '#FFD700' : 'transparent',
+                            color: activeTab === 'power' ? '#000' : '#FFD700',
+                            border: '1px solid #FFD700',
+                            cursor: 'pointer',
+                            fontWeight: 'bold',
+                            transition: 'all 0.2s ease'
+                        }}
+                    >
+                        BlackSlon Power Indexes
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('nat_gas')}
+                        style={{
+                            padding: '12px 24px',
+                            background: activeTab === 'nat_gas' ? '#87CEEB' : 'transparent',
+                            color: activeTab === 'nat_gas' ? '#000' : '#87CEEB',
+                            border: '1px solid #87CEEB',
+                            cursor: 'pointer',
+                            fontWeight: 'bold',
+                            transition: 'all 0.2s ease'
+                        }}
+                    >
+                        BlackSlon Gas Indexes
+                    </button>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '8px' }}>
@@ -182,6 +200,9 @@ export default function TerminalPage() {
                 </div>
 
                 <div style={{ marginTop: '20px', padding: '20px 10px', border: '2px solid #333', background: '#050505', textAlign: 'center', borderColor: getAccent() }}>
+                    <div style={{ fontSize: '9px', color: '#666', marginBottom: '5px' }}>
+                        {activeTab === 'power' ? 'BlackSlon European Power Index' : 'BlackSlon European Gas Index'}
+                    </div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
                         <span style={{ fontSize: '16px', fontWeight: 'bold', color: '#fff' }}>
                             {activeTab.toUpperCase()} BENCHMARK:
