@@ -203,6 +203,12 @@ export default function TerminalPage() {
                     <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#fff' }}>
                         {activeTab === 'power' ? 'BlackSlon European Power Index' : 'BlackSlon European Gas Index'}
                     </div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                        <span style={{ fontSize: '22px', fontWeight: 'bold', color: getAccent() }}>
+                            {calculateBenchmarkValue()}
+                        </span>
+                        <span style={{ fontSize: '9px', color: '#666' }}>€/100 kWh eq</span>
+                    </div>
                 </div>
             </div>
         </main>
