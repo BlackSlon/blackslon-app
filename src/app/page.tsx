@@ -8,7 +8,7 @@ export default function Home() {
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', gap: '20px', padding: '20px' }}>
         
         <div style={{ textAlign: 'center' }}>
-          <h1 style={{ fontSize: '64px', fontWeight: '700', letterSpacing: '6px', margin: 0 }}>BlackSlon</h1>
+          <h1 style={{ fontSize: '64px', fontWeight: '200', letterSpacing: '6px', margin: 0 }}>BlackSlon</h1>
           <p style={{ color: '#888', fontSize: '20px', letterSpacing: '4px', margin: '5px 0 20px 0', fontWeight: '200' }}>Energy Indexes</p>
         </div>
 
