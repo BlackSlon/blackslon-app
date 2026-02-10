@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main style={{ backgroundColor: '#000', minHeight: '100vh', color: '#fff', fontFamily: 'monospace' }}>
+    <main style={{ backgroundColor: '#000', minHeight: '100vh', color: '#fff' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', gap: '20px', padding: '20px' }}>
         
         <div style={{ textAlign: 'center' }}>
-          <h1 style={{ fontSize: '64px', fontWeight: 'bold', letterSpacing: '6px', margin: 0 }}>BlackSlon</h1>
-          <p style={{ color: '#888', fontSize: '20px', letterSpacing: '4px', margin: '5px 0 20px 0' }}>Energy Indexes</p>
+          <h1 style={{ fontSize: '64px', fontWeight: '700', letterSpacing: '6px', margin: 0 }}>BlackSlon</h1>
+          <p style={{ color: '#888', fontSize: '20px', letterSpacing: '4px', margin: '5px 0 20px 0', fontWeight: '200' }}>Energy Indexes</p>
         </div>
 
         <div style={{ width: '300px', height: '300px', marginBottom: '40px' }}>
