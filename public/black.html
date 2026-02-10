@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>BlackSlon Terminal - Core Engine</title>
+    <script src="engine.js"></script>
+    <style>
+        /* Estetyka Głębokiej Czerni i Stali */
+        body { 
+            background: #050505; 
+            color: #e0e0e0; 
+            font-family: 'Inter', 'Segoe UI', sans-serif; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .black-terminal { 
+            border: 1px solid #333; 
+            padding: 40px; 
+            background: #000; 
+            box-shadow: 0 0 50px rgba(0,0,0,1), 0 0 20px rgba(255,255,255,0.05);
+            width: 450px;
+        }
+        .ticker { color: #888; font-size: 0.9em; letter-spacing: 2px; }
+        .price-main { 
+            font-size: 3.5em; 
+            font-weight: 200; 
+            margin: 20px 0; 
+            color: #fff;
+            letter-spacing: -2px;
+        }
+        .stats { border-top: 1px solid #222; margin-top: 20px; padding-top: 20px; }
+        .stat-row { display: flex; justify-content: space-between; font-family: monospace; margin: 5px 0; }
+        .slider-container { margin-top: 30px; }
+        input[type=range] { 
+            width: 100%; 
+            background: #222; 
+            cursor: pointer;
+            accent-color: #fff; /* Biały suwak na czarnym tle - czysta elegancja */
+        }
+        .bsz-indicator { font-size: 0.7em; color: #444; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="black-terminal">
+    <div class="ticker">BLSN-E-PL // BSZ CORE</div>
+    <div class="price-main" id="price-display">0.00</div>
+    
+    <div class="slider-container">
+        <div class="stat-row">
+            <span>LIQUIDTY (S)</span>
+            <span id="liq-val">0</span>
+        </div>
+        <input type="range" min="0" max="5000000" value="0" id="liq-input">
+    </div>
+
+    <div class="stats">
+        <div class="stat-row">
+            <span>ANCHOR (a)</span>
+            <span id="anchor-val">---</span>
+        </div>
+        <div class="stat-row">
+            <span>STABILIZER b</span>
+            <span id="b-val">---</span>
+        </div>
+        <div class="bsz-indicator" id="bsz-info">BSZ ZONE ACTIVE: +/- 10%</div>
+    </div>
+</div>
+
+<script>
+    const engine = window.BSZ_Engine;
+    // Pamiętasz o naszej hybrydzie 50/25/25?
+    const anchor = engine.calculateAnchor(110, 105, 100); 
+    let emaP = anchor;
+
+    const input = document.getElementById('liq-input');
+    
+    function refresh() {
+        const s = parseFloat(input.value);
+        const b_adj = engine.calculateAdaptiveB(emaP, anchor, emaP);
+        const p = engine.getNextPrice(anchor, b_adj, s);
+
+        document.getElementById('price-display').innerText = p.toFixed(2);
+        document.getElementById('liq-val').innerText = s.toLocaleString() + " EUR";
+        document.getElementById('b-val').innerText = b_adj.toFixed(7);
+        document.getElementById('anchor-val').innerText = anchor.toFixed(2);
+        
+        emaP = (p * 0.1) + (emaP * 0.9);
+    }
+
+    input.oninput = refresh;
+    refresh();
+</script>
+</body>
+</html>
