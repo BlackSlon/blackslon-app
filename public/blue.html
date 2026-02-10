@@ -7,8 +7,6 @@
 </head>
 <body>
 
-<h1 style='color: white; position: absolute; top: 10px; left: 10px; z-index: 9999;'>Matrix Test Mode</h1>
-
 <div id="blackslon-matrix-root"></div>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -95,6 +93,8 @@
 </style>
 
 <script type="text/babel">
+  console.log('Matrix Loading...');
+  
   const { useState } = React;
 
   const EVENTS = [
@@ -170,8 +170,17 @@
     );
   }
 
-  const root = ReactDOM.createRoot(document.getElementById('blackslon-matrix-root'));
-  root.render(<MatrixApp />);
+  const container = document.getElementById('blackslon-matrix-root');
+  console.log('Container found:', container);
+  
+  if (container) {
+    const root = ReactDOM.createRoot(container);
+    console.log('Root created, rendering MatrixApp...');
+    root.render(<MatrixApp />);
+    console.log('MatrixApp rendered successfully!');
+  } else {
+    console.error('Container blackslon-matrix-root not found!');
+  }
 </script>
 
 </body>
