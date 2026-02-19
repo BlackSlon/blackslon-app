@@ -1,6 +1,6 @@
-## **Architecture of the BlackSlon Trading Zone (BSTZ): The Physical Energy Market framework for Virtual Energy Trading**
+## **Architecture of the BlackSlon Trading Zone (BSTZ): The Physical Energy Market Framework for Virtual Energy Trading**
 
-The BlackSlon Trading Zone is hard-capped corridor for all trading and settlement activities within the BlackSlon protocol. Established independently for each energy market - BlackSlon Energy Index. It serves as the designated corridor where all internal transactions and settlements are executed.
+The BlackSlon Trading Zone is hard-capped corridor for all trading and settlement activities within the BlackSlon protocol. Established independently for each energypower and gas market across European continent, by synthesizing fixed mathematical parameters with market-specific variables.
 
 The BSTZ acts as a rigid systemic constraint. The BlackSlon protocol only permits, validates, and settles transactions that occur strictly within this predefined zone. Outside this corridor, the system has no operational capacity — trading is technically impossible and settlement is blocked.
 

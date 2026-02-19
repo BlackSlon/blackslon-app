@@ -1,8 +1,9 @@
-## 6. Collaterals & Risk Management
-
+## **6. Risk Management: Micro (User) Level**
+<br>
 ## **1.Tiering Matrix**
 The protocol incentivizes the use of €BSR (BlackSlon Reserve). Higher BSR ratios result in lower Initial Margin (IM) requirements and reduced Trading Fees, significantly increasing capital efficiency.
-
+<br>
+<br>
 
 | BSR Ratio/Stake (%) | Margin LONG | Margin SHORT | Leverage (L/S) | Trading Fee |
 | :--- | :--- | :--- | :--- | :--- |
@@ -12,26 +13,33 @@ The protocol incentivizes the use of €BSR (BlackSlon Reserve). Higher BSR rati
 | **75%** | **30%** | **60%** | 1:3.3 / 1:1.6 | 0.35% |
 | **100% (Max)** | **25%** | **50%** | **1:4.0 / 1:2.0** | **0.20%** |
 
+<br>
+<br>
 
-
-## **2. The Master Equity Formula (Portfolio Sigma)**
+**2. The Master Equity Formula (Portfolio Sigma)**
 To avoid "Liquidation Communism," we aggregate all collateral and all floating profits/losses into a single, real-time value.
+<br>
+<br>
 
 $$Equity_{total} = \underbrace{\left( \sum_{k=1}^{n} Q_{eEURO, k} + \sum_{k=1}^{n} Q_{BSR, k} \cdot P_{BSR} \right)}_{\text{Total Aggregated Collateral}} + \underbrace{\sum_{j=1}^{m} \Delta PnL_{IPT, j}}_{\text{Net Unrealized PnL}}$$
 
 
 
-Definitions:
+where:
 - $Equity_{total}$: The real-time total value of the user's portfolio (Vault Value + Net Unrealized PnL). This is the "numerator" representing the current available capital.
 - $Q_{eEURO}$: The eEURO Balance held as collateral.
 - $Q_{BSR}$: The €BSR Balance (BlackSlon Reserve Tokens) held as collateral.
 - $P_{BSR}$: Current market price of the €BSR token.
 - $\Delta PnL_{IPT}$: The Unrealized Profit or Loss from an open position on the Index Participation Token (IPT).
 - $\sum$ (Sigma): Represents the mathematical summation of all individual collateral units and positions held in the portfolio.
---- 
+<br>  
+<br>
 
 $$Equity_{total} = \underbrace{\sum_{k=1}^{n} \text{Collateral Value}_k}_{\text{Vault (Loop } k\text{)}} + \underbrace{\sum_{j=1}^{m} \Delta PnL_j}_{\text{Market (Loop } j\text{)}}$$
+<br>
+<br>
 
+where:
 > Collateral Indices (The Assets)
 - $n$ (Total Collateral Tiers/Types): Represents the total number of distinct collateral "buckets" or asset categories held in the user’s vault. Since there are no expiries, $n$ refers specifically to the different BSR/eEURO ratio allocations (Tiers).
 - $k$ (Collateral Index/Asset Iterator): The specific iterator for collateral assets. It represents an individual entry in the list of deposited funds (where $k = 1, 2, 3, \dots, n$). The protocol uses this index to sum up all eEURO and €BSR (BlackSlon Reserve) values. The specific index used to loop through each collateral type (where $k = 1, 2, \dots, n$). It identifies whether the system is currently calculating the value of a 10% BSR bucket, a 50% BSR bucket, or a 90% eEURO deposit.Loop $k$ Sums the value of all assets "held in the vault" as Initial Margin. This loop iterates through every distinct collateral deposit ($Q_{eEURO}$ and $Q_{BSR}$) to establish the total committed capital providing Liquidty to the protocol. It represents the realized base of the portfolio.
@@ -42,23 +50,27 @@ Sums the floating results of everything "working in the market." This loop calcu
 
 By separating these two loops, the protocol can instantly distinguish between the "hard" assets you own (the vault) and the "soft" floating gains or losses on open positions.
 
+<br>
+<br>
 
-## **3. The Health Factor Formula ($H_{BSTZ}$)**
+**3. The Health Factor Formula ($H_{BSTZ}$)**
 
 $$H_{BSTZ} = \frac{Equity_{total}}{\left( \sum_{j=1}^{m} IM_j \right) \cdot 0.5}$$
 
-1. Component Definitions
+where:
 - $Equity_{total}$ (Account Net Value): The real-time total value of the user's portfolio (Vault Value + Net Unrealized PnL). This is the "numerator" representing the current available capital.
 - $IM_j$ (Initial Margin of Position $j$): The original amount of collateral (in eEURO equivalent) required to open position $j$. This value is determined by the Tiering Matrix based on the chosen BSR stake for that specific trade.
 - $m$ (Total Position Count): The total number of active, open trading positions. The system loops through all $m$ positions to calculate the total required margin.
 - $0.5$ (Stop-out Threshold): The constant representing the Stop-out Threshold. When the Health Factor drops below this value, the system triggers the Smart De-risking. It establishes that the protocol will intervene when the user's Net Account Value reaches 50% of their Aggregate Initial Margin.
 - $\sum_{j=1}^{m} IM_j$ (Total Required Margin/Aggregate Initial Margin): The combined total of all initial margins required for all currently open positions. This represents the user's Total Committed Capital locked within the protocol
+<br>
+<br>
 
-
-## **4. Smart Incremental Liquidation Mechanism**
+**4. Smart Incremental Liquidation Mechanism**
 The BlackSlon protocol does not blindly cut the random / largest loss or postion. Instead, it applies a smart logic to determine which position's reduction offers the best "Health-to-Loss" ratio.
 
 The Smart Incremental Liquidation Mechanism activates immediately if the Total Equity falls below 50% of the required initial margin:
+
 $$Trigger_{DeRisk} \iff Equity_{total} \le \left( \sum_{j=1}^{m} IM_j \right) \cdot 0.5$$
 
 
@@ -72,7 +84,10 @@ The system evaluates all active positions ($j=1$ to $m$) and calculates the Heal
 Balanced Loss Absorption (The 50/50 Rule) 
 The loss incurred during a position reduction is settled by deducting equal value from the user's eEURO balance and €BSR (BlackSlon Reserve). This symmetric settlement policy ensures that the protocol maintains its Liquidty by balancing the impact between stable currency and native utility tokens.
 
-## **5. Margin Monitoring & Alert System**
+<br>
+<br>
+
+**5. Margin Monitoring & Alert System**
 The protocol continuously monitors the safety and solvency of every position within the BlackSlon Protocol. The following thresholds, based on the $H_{BSTZ}$ (Health Factor), define the automated actions triggered during critical market conditions to preserve Liquidty.
 
 The Protective Mechanism Hierarchy

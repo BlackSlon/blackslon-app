@@ -1,26 +1,3 @@
-2. Jak to nazwać, żeby zostało w BSTZ (Utility)?
-Zamiast mówić o „udziale w indeksie”, musisz używać terminologii „Jednostki Rozliczeniowej Ekosystemu”:
-
-Definicja prawna: IPT to Utility Token, który służy jako wewnętrzna jednostka miary mocy obliczeniowej/paliwowej wewnątrz zamkniętego ekosystemu BlackSlon Settlement Zone.
-
-Rola Indeksu: Indeks (BSEI) nie jest „aktywem bazowym”, w którym masz udział. On jest jedynie zewnętrznym wyznacznikiem (oraclem), który określa, ile „usługi energetycznej” możesz kupić za swój token w danym momencie.
-
-Przykład: To tak jakbyś kupił karnet na siłownię, gdzie liczba wejść zależy od temperatury na zewnątrz. Nie masz „udziału w temperaturze”, masz po prostu zmienną użyteczność swojego karnetu.
-
-
-3. Zamknięty Ekosystem (Closed Loop) – Twój klucz do wolności
-To, co napisałeś o „zamkniętym ekosystemie”, to Twój najsilniejszy argument.
-
-Według MiCA, jeśli token jest akceptowany wyłącznie przez emitenta i służy do dostępu do jego usług, to jest to klasyczny Utility Token.
-
-Fakt, że „póki co nie wymieniasz go na towar”, jest bezpieczny, dopóki udowadniasz, że token daje prawo do tej wymiany w przyszłości lub daje inne korzyści wewnątrz aplikacji (np. staking, niższe fee, dostęp do danych).
-
-
-Nie używaj słów:,Używaj słów:,Dlaczego?
-Udział w indeksie (Share),Jednostka dostępu (Access unit),Unikasz skojarzeń z akcjami/funduszem.
-Inwestycja (Investment),Nabycie uprawnień (Acquisition of rights),„Inwestycja” sugeruje instrument finansowy.
-Aktywo bazowe (Underlying),Wyznacznik referencyjny (Benchmark),Benchmark w utility jest dopuszczalny.
-Zysk (Profit),Wzrost użyteczności (Utility appreciation),"Skupiasz się na funkcji, nie na spekulacji."
 
 
 # LEGAL CLASSIFICATION MEMORANDUM: IPT TOKEN (BLACKSLON SETTLEMENT ZONE)

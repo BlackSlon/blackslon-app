@@ -3,7 +3,7 @@
 ## Core Terminology
 - **BSTZ (BlackSlon Trading Zone)**: The trading area where transacions within BlackSlon Protocol can be settled. The anchor "a" price +/- 10%. 
 - **BSEI (BlackSlon BlackSlon Energy Index)**: As for now BlackSlone Power Index for specific market and BlackSlon Gas Index for specific market (national markets in Europe, i.e. German Power Market, Dutch Gas Market, etc.). The base BSTZ price used as the anchor for IPT pricing.
-- **IPT (Index Participation Token)**: The tradable asset that follows BBSTZspecific BSEI.
+- **IPT (Index Participation Token)**: The tradable asset that follows specific BSEI, i.e. BSPI-PL (BlackSlon Power Index - Poland), BSGI-NL (BlackSlon Gas Index - Netherlands), BSPI-DE (BlackSlon Power Index - Germany), BSGI-BG (BlackSlon Gas Index - Bulgaria), etc.
 - **€BSR (BlackSlon Reserve)**: The main protocol token used for collateral and value capture.
 - **Liquidity**: The lifeblood of the protocol vaults.
 
