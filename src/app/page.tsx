@@ -17,21 +17,10 @@ export default function Home() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', width: '100%', maxWidth: '600px' }}>
-          <Link href="/terminal" style={{ textDecoration: 'none' }}>
-            <div style={squareStyle('#FFD700', '#000')}>BlackSlon Energy Indexes</div>
-          </Link>
-          <Link href="/red.html" style={{ textDecoration: 'none' }}>
-            <div style={squareStyle('#FF4136', '#fff')}>Broken Market Architecture</div>
-          </Link>
-          <Link href="/green.html" style={{ textDecoration: 'none' }}>
-            <div style={squareStyle('#2ECC40', '#fff')}>Manifesto</div>
-          </Link>
-          <Link href="/blue.html" style={{ textDecoration: 'none' }}>
-            <div style={squareStyle('#0074D9', '#fff')}>Matrix of BlackSlon Events</div>
-          </Link>
-          <Link href="/white-paper.html" style={{ textDecoration: 'none' }} onClick={(e) => { e.preventDefault(); alert('White Paper jest tymczasowo niedostępny - aktualizacja w toku'); }}>
-            <div style={squareStyle('#FFFFFF', '#000')}>White Paper</div>
-          </Link>
+          <div style={squareStyle('#FFD700', '#000')} onClick={(e) => { e.preventDefault(); alert('BlackSlon Energy Indexes - coming soon!'); }}>BlackSlon Energy Indexes</div>
+          <div style={squareStyle('#FF4136', '#fff')} onClick={(e) => { e.preventDefault(); alert('Broken Market Architecture - coming soon!'); }}>Broken Market Architecture</div>
+          <div style={squareStyle('#2ECC40', '#fff')} onClick={(e) => { e.preventDefault(); alert('Manifesto - coming soon!'); }}>Manifesto</div>
+          <div style={squareStyle('#0074D9', '#fff')} onClick={(e) => { e.preventDefault(); alert('Matrix of BlackSlon Events - coming soon!'); }}>Matrix of BlackSlon Events</div>
         </div>
       </div>
     </main>
