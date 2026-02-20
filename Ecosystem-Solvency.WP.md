@@ -21,7 +21,7 @@ The Denominator (Total Systemic Liabilities) represents the sum of all claims th
 - $\sum BSR_{C}$ (Circulating $BSR$ Value): The total market value of all BlackSlon Reserve tokens currently held by users. Since users can redeem $BSR$ for underlying collateral, it is treated as a core systemic liability. It is valued at 100% of its current market price without any discount.
 - $\sum OVP$ (Open Virtual Positions): The total MtM value of all active open virtual positions, from both Long and Short positions. By including both directions, the BlackSlon Protocol guarantees it can facilitate Settlement for all 'In-the-Money' participants at any time.
 
-### The Solvency Integrity Layer (SIL)
+## The Solvency Integrity Layer (SIL)
 
 The Solvency Integrity Layer (SIL) is a critical component of the BlackSlon Protocol. The SIL is the protocol’s automated oversight mechanism. While micro-level Risk Management is handled at the user level, the SIL operates at the ecosystem level. Its main job is to ensure that the Total Systemic Liabilities never outpace the Adjusted Vault Assets.
 
